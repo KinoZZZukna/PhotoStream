@@ -24,10 +24,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     public static final Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
     @Autowired
-    public JWTAuthenticationFilter(JWTProvider jwtProvider, CustomUserDetailsService customUserDetailsService) {
-        this.jwtProvider = jwtProvider;
-        this.customUserDetailsService = customUserDetailsService;
-    }
+    private JWTProvider jwtProvider;
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
