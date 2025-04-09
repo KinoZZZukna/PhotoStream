@@ -21,10 +21,7 @@ import java.util.Collections;
 
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
-    public static final Logger logger = LoggerFactory.getLogger(JWTProvider.class);
-
-    private final JWTProvider jwtProvider;
-    private final CustomUserDetailsService customUserDetailsService;
+    public static final Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
     @Autowired
     public JWTAuthenticationFilter(JWTProvider jwtProvider, CustomUserDetailsService customUserDetailsService) {
