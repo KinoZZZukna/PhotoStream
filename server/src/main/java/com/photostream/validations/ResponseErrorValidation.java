@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class ResponseErrorValidator {
+public class ResponseErrorValidation {
     public ResponseEntity<Object> mapValidationService(BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
