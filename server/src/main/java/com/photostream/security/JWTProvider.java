@@ -45,7 +45,7 @@ public class JWTProvider {
                     .parseSignedClaims(token);
 
             return true;
-        } catch (MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
+        } catch (SignatureException | MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
             logger.error("Invalid JWT token");
 
             return false;
