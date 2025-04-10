@@ -30,7 +30,7 @@ public class JWTProvider {
 
         return Jwts.builder()
                 .setSubject(userId)
-                .setClaims(claimsMap)
+                .addClaims(claimsMap)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
@@ -41,8 +41,7 @@ public class JWTProvider {
         try {
             Jwts.parser()
                     .setSigningKey(SecurityConstants.SECRET)
-                    .build()
-                    .parseSignedClaims(token);
+                    .parseClaimsJws(token);
 
             return true;
         } catch (SignatureException | MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
@@ -55,9 +54,8 @@ public class JWTProvider {
     public long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(SecurityConstants.SECRET)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+                .parseClaimsJws(token)
+                .getBody();
 
         String id = (String) claims.get("id");
 

@@ -2,7 +2,7 @@ package com.photostream.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.photostream.entity.enums.ERole;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
